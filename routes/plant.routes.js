@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../models/user-model');
-const Plant = require('../models/plant-model');
+const User = require('../models/user.model');
+const Plant = require('../models/plant.model');
 
 //Add a plant to database and/or user favorites
 router.post('/plants/save', async(req, res, next) => {
