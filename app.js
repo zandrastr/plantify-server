@@ -27,8 +27,8 @@ app.use('/api', authRoutes);
 const userRoutes = require('./routes/user');
 app.use('/api', userRoutes);
 
-// const plantRoutes = require('./routes/plant');
-// app.use('/api', plantRoutes);
+const plantRoutes = require('./routes/plant.routes');
+app.use('/api', plantRoutes);
 
 // Connect to MongoDB database
 async function init () {
