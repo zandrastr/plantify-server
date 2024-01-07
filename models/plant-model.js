@@ -12,11 +12,7 @@ const PlantSchema = mongoose.Schema({
     description: String,
     sunNeeds: String,
     waterNeeds: String,
-    picture: String,
-    userId: {
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
-    }
+    imageUrl: String,
 },
 {
     timestamps: true
