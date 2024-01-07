@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../models/user-model');
+const User = require('../models/user.model');
 const { default: mongoose } = require('mongoose');
 
 //Related to npm-package bcrypt that will handle encryption of passwords
