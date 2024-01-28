@@ -62,4 +62,30 @@ router.post('/plants/save', async(req, res, next) => {
     }
 });
 
+//Add a plant to database only (on share)
+router.post('/plants/share/save', async(req, res, next) => {
+
+    try {
+        const {name, latinName, description, sunNeeds, waterNeeds, imageUrl} = req.body;
+
+        if (name === '' || latinName === '') {
+            res.status(400).json({message: 'Name and Latin name required.'});
+            return;
+        }
+
+        const foundPlant = await Plant.findOne({latinName});
+
+        if (foundPlant) {
+            res.status(400).json({message: 'Plant already exists.', plant: foundPlant});
+            return;
+        }
+
+        const createdPlant = await Plant.create({name, latinName, description, sunNeeds, waterNeeds, imageUrl});
+        res.status(200).json({message: 'Plant saved successfully',  plant: createdPlant});
+
+    } catch (error) {
+        console.log("Something went wrong while saving plant:", error);
+    }
+});
+
 module.exports = router;
